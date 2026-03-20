@@ -42,10 +42,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
+        {/* Force the browser to find the manifest */}
+        <link rel="manifest" href="/manifest.json" />
         {/* Force the standalone mode for older browsers */}
-        <meta name="mobile-web-app-capable" content="yes" />
-        <meta name="apple-mobile-web-app-capable" content="yes" />
+       <meta name="theme-color" content="#7c3aed" />
+       
       </head>
+      <body className="antialiased">{children}</body>
       <script
   dangerouslySetInnerHTML={{
     __html: `
@@ -57,7 +60,7 @@ export default function RootLayout({
     `,
   }}
 />
-      <body>{children}</body>
+     
     </html>
   );
 }
