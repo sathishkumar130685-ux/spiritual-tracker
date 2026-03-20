@@ -9,8 +9,14 @@ export const viewport = {
 
 // 2. Keep the rest here
 export const metadata = {
-  title: 'PranaTrack',
-  manifest: '/manifest.json', // This is the "App" trigger
+  title: "PranaTrack",
+  description: "Sathish's Spiritual Tracker",
+  manifest: "/manifest.json",
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: "default",
+    title: "PranaTrack",
+  },
 };
 
 
