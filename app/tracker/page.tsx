@@ -20,8 +20,8 @@ export default function TrackerPage() {
   };
 
 // Inside your TrackerPage function
-const [userName, setUserName] = useState('');
-const [streakCount, setStreakCount] = useState(0); // <-- ADD THIS LINE
+const [userName, setUserName] = useState<string>('');
+const [streakCount, setStreakCount] = useState<number>(0); // <-- ADD THIS LINE
 
 useEffect(() => {
   async function fetchName() {
