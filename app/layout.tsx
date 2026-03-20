@@ -1,24 +1,38 @@
 import './globals.css';
-import { Inter } from 'next/font-awesome'; // Or just skip font for now
+// Replace the red-lined 'next/font-awesome' with this:
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+// Change 'faHandsPrays' to 'faHandsPraying'
+import { faHandsPraying, faOm, faCircleCheck } from '@fortawesome/free-solid-svg-icons';
+
+// In your component:
+<FontAwesomeIcon icon={faHandsPraying} className="text-purple-600" />
 // 1. Move themeColor here
-export const viewport = {
-  themeColor: '#7c3aed',
-  width: 'device-width',
+
+
+
+import type { Metadata, Viewport } from "next";
+
+export const viewport: Viewport = {
+  themeColor: "#7c3aed", // Your PranaTrack Purple
+  width: "device-width",
   initialScale: 1,
+  maximumScale: 1,
+  userScalable: false,
 };
 
-// 2. Keep the rest here
-export const metadata = {
+export const metadata: Metadata = {
   title: "PranaTrack",
-  description: "Sathish's Spiritual Tracker",
+  description: "Sathish Kumar - Spiritual Tracker",
   manifest: "/manifest.json",
   appleWebApp: {
     capable: true,
     statusBarStyle: "default",
     title: "PranaTrack",
   },
+  formatDetection: {
+    telephone: false,
+  },
 };
-
 
 export default function RootLayout({
   children,
@@ -27,13 +41,13 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>
-        <main>{children}</main>
-        <nav className="p-4 bg-white border-b flex justify-center space-x-6 text-sm font-bold">
-            <a href="/tracker" className="text-slate-600 hover:text-purple-600">TRACKER</a>
-            <a href="/report" className="text-slate-600 hover:text-purple-600">REPORT</a>
-        </nav>
-      </body>
+      <head>
+        {/* Force the standalone mode for older browsers */}
+        <meta name="mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+      </head>
+      <body>{children}</body>
     </html>
   );
 }
+
